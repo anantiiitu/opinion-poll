@@ -16,11 +16,11 @@ if (count($_POST) > 1) {
 
     $option = $_POST['vote'][0];
 
-    $sql_stmt = "INSERT INTO js_libraries (`choice`,`ts`) VALUES ($option,'$ts')";
+    $sql_stmt = "INSERT INTO opinion_poll (`choice`,`ts`) VALUES ($option,'$ts')";
 
     $model->insert($sql_stmt);
 
-    $sql_stmt = "SELECT COUNT(choice) choices_count FROM js_libraries;";
+    $sql_stmt = "SELECT COUNT(choice) choices_count FROM opinion_poll;";
 
     $choices_count = $model->select($sql_stmt);
 
@@ -30,7 +30,7 @@ if (count($_POST) > 1) {
 
     for ($i = 1; $i < 5; $i++) {
 
-        $sql_stmt = "SELECT COUNT(choice) choices_count FROM js_libraries WHERE choice = $i;";
+        $sql_stmt = "SELECT COUNT(choice) choices_count FROM opinion_poll WHERE choice = $i;";
 
         $result = $model->select($sql_stmt);
 
